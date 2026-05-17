@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md. Sabbir Hossain Naeem — Senior Business Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0d1b2a;
+    --navy-mid: #1a2e45;
+    --navy-light: #243b55;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --cream: #f8f5ef;
+    --cream-dark: #ede9df;
+    --text-dark: #1a1a1a;
+    --text-mid: #4a4a4a;
+    --text-light: #888;
+    --white: #ffffff;
+    --section-gap: 90px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+    background: rgba(13,27,42,0.97);
+    backdrop-filter: blur(8px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 300; letter-spacing: 0.06em;
+    color: var(--gold-light);
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    text-decoration: none; color: rgba(255,255,255,0.6);
+    font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 6% 80px 8%;
+    position: relative; z-index: 2;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.6rem, 4.5vw, 5rem);
+    font-weight: 300; line-height: 1.08;
+    color: var(--white); margin-bottom: 0.5rem;
+  }
+  .hero-name em { font-style: italic; color: var(--gold-light); }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    color: rgba(255,255,255,0.5); letter-spacing: 0.04em; margin-bottom: 2rem;
+  }
+
+  .hero-desc {
+    font-size: 0.93rem; color: rgba(255,255,255,0.55);
+    max-width: 430px; line-height: 1.85; margin-bottom: 2.8rem;
+  }
+
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--gold); color: var(--navy);
+    padding: 13px 30px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent; color: rgba(255,255,255,0.65);
+    padding: 12px 30px; border: 1px solid rgba(255,255,255,0.2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  .hero-right {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--navy-mid) 0%, var(--navy-light) 100%);
+  }
+
+  .hero-photo-box {
+    width: 300px; height: 400px;
+    border: 1px solid rgba(201,168,76,0.35);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .hero-photo-box::before {
+    content: '';
+    position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px;
+    border: 1px solid rgba(201,168,76,0.12);
+    pointer-events: none; z-index: 0;
+  }
+  .hero-initials {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4.5rem; font-weight: 300; color: var(--gold);
+    letter-spacing: 0.05em; z-index: 1;
+  }
+
+  .hero-stats {
+    position: absolute; bottom: 40px; right: 36px;
+    display: flex; gap: 28px;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem; font-weight: 600; color: var(--gold); line-height: 1;
+  }
+  .stat-label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-top: 4px; }
+
+  .bg-grid {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1; opacity: 0.03;
+    background-image: linear-gradient(rgba(255,255,255,1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  /* SECTIONS */
+  section { padding: var(--section-gap) 8%; }
+
+  .section-header { display: flex; align-items: flex-end; gap: 20px; margin-bottom: 56px; }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--navy); opacity: 0.08; line-height: 1; flex-shrink: 0;
+  }
+
+  .section-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 6px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-eyebrow::before { content: ''; width: 22px; height: 1px; background: var(--gold); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3vw, 2.7rem);
+    font-weight: 300; color: var(--navy); line-height: 1.12;
+  }
+
+  /* ABOUT */
+  #about { background: var(--white); }
+
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 72px; align-items: start; }
+
+  .about-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; color: var(--text-dark); line-height: 1.65; margin-bottom: 1.4rem;
+  }
+  .about-body { font-size: 0.95rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 1.1rem; }
+
+  .info-list { list-style: none; margin-top: 0.5rem; }
+  .info-list li {
+    display: flex; gap: 12px;
+    padding: 11px 0; border-bottom: 1px solid var(--cream-dark);
+    font-size: 0.88rem;
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-key { color: var(--text-light); min-width: 100px; font-size: 0.75rem; letter-spacing: 0.05em; text-transform: uppercase; flex-shrink: 0; }
+  .info-val { color: var(--text-dark); }
+
+  /* EXPERTISE */
+  #expertise { background: var(--cream); }
+
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+
+  .skill-card {
+    background: var(--white); padding: 36px 28px;
+    transition: background 0.25s; position: relative; overflow: hidden;
+  }
+  .skill-card::after {
+    content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+    background: var(--gold); transition: height 0.3s ease;
+  }
+  .skill-card:hover::after { height: 100%; }
+  .skill-card:hover { background: var(--navy); }
+  .skill-card:hover .skill-icon,
+  .skill-card:hover .skill-name { color: var(--gold); }
+  .skill-card:hover .skill-items li { color: rgba(255,255,255,0.55); }
+
+  .skill-icon { font-size: 1.5rem; color: var(--navy); margin-bottom: 18px; transition: color 0.25s; }
+  .skill-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-weight: 600; color: var(--navy);
+    margin-bottom: 14px; transition: color 0.25s;
+  }
+  .skill-items { list-style: none; }
+  .skill-items li {
+    font-size: 0.82rem; color: var(--text-mid); padding: 4px 0;
+    transition: color 0.25s; display: flex; align-items: center; gap: 7px;
+  }
+  .skill-items li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  /* EXPERIENCE */
+  #experience { background: var(--white); }
+
+  .timeline { position: relative; }
+  .timeline::before {
+    content: ''; position: absolute; left: 170px; top: 0; bottom: 0;
+    width: 1px; background: var(--cream-dark);
+  }
+
+  .timeline-item {
+    display: grid; grid-template-columns: 170px 1fr;
+    gap: 44px; margin-bottom: 52px; position: relative;
+  }
+  .timeline-item::before {
+    content: ''; position: absolute; left: 163px; top: 7px;
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--gold); border: 2px solid var(--white);
+    box-shadow: 0 0 0 2px var(--gold);
+  }
+
+  .timeline-date { text-align: right; padding-top: 2px; }
+  .timeline-period { font-size: 0.76rem; color: var(--text-light); letter-spacing: 0.04em; }
+  .timeline-company { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; line-height: 1.4; }
+
+  .timeline-content { padding-left: 44px; }
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; color: var(--navy); margin-bottom: 10px;
+  }
+  .timeline-desc { font-size: 0.9rem; color: var(--text-mid); line-height: 1.85; margin-bottom: 14px; }
+
+  .resp-list { list-style: none; margin-bottom: 14px; }
+  .resp-list li {
+    font-size: 0.85rem; color: var(--text-mid); padding: 3px 0;
+    display: flex; align-items: flex-start; gap: 8px; line-height: 1.6;
+  }
+  .resp-list li::before { content: '—'; color: var(--gold); flex-shrink: 0; font-size: 0.8rem; margin-top: 2px; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
+  .tag {
+    background: var(--cream); color: var(--navy);
+    padding: 4px 13px; font-size: 0.73rem;
+    letter-spacing: 0.04em; border: 1px solid var(--cream-dark);
+  }
+
+  /* TOOLS */
+  #tools { background: var(--cream); }
+
+  .tools-section { margin-bottom: 48px; }
+  .tools-section-label {
+    font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .tools-section-label::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
+
+  .tools-grid {
+    display: flex; flex-wrap: wrap; gap: 2px;
+  }
+
+  .tool-item {
+    background: var(--white); padding: 20px 22px;
+    display: flex; align-items: center; gap: 10px;
+    transition: background 0.2s; cursor: default;
+    min-width: 140px;
+  }
+  .tool-item:hover { background: var(--navy); }
+  .tool-item:hover .tool-name { color: var(--white); }
+  .tool-item:hover .tool-icon { color: var(--gold); }
+  .tool-icon { font-size: 1.1rem; color: var(--navy-mid); transition: color 0.2s; flex-shrink: 0; }
+  .tool-name { font-size: 0.82rem; color: var(--text-mid); transition: color 0.2s; }
+
+  /* TRAINING */
+  #training { background: var(--white); }
+
+  .training-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+
+  .training-card {
+    border: 1px solid var(--cream-dark); padding: 28px;
+    position: relative; overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .training-card:hover { border-color: var(--gold); }
+
+  .training-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem; font-weight: 300; color: var(--navy); opacity: 0.1;
+    position: absolute; top: 16px; right: 20px; line-height: 1;
+  }
+
+  .training-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 8px;
+  }
+  .training-meta { font-size: 0.8rem; color: var(--text-light); margin-bottom: 4px; }
+
+  /* SOFT SKILLS */
+  .soft-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 0; }
+  .soft-pill {
+    background: var(--navy); color: rgba(255,255,255,0.75);
+    padding: 8px 18px; font-size: 0.8rem; letter-spacing: 0.04em;
+    transition: background 0.2s;
+  }
+  .soft-pill:hover { background: var(--gold); color: var(--navy); }
+
+  /* CONTACT */
+  #contact { background: var(--navy); }
+  #contact .section-num { color: var(--white); opacity: 0.06; }
+  #contact .section-title { color: var(--white); }
+  #contact .section-eyebrow { color: var(--gold); }
+
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 72px; align-items: start; }
+
+  .contact-info p { font-size: 0.95rem; color: rgba(255,255,255,0.5); line-height: 1.9; margin-bottom: 2.5rem; }
+
+  .contact-detail { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-row { display: flex; align-items: center; gap: 14px; font-size: 0.88rem; color: rgba(255,255,255,0.55); }
+  .contact-row i { color: var(--gold); width: 18px; text-align: center; }
+  .contact-row a { color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .contact-row a:hover { color: var(--gold-light); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 14px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-group { display: flex; flex-direction: column; gap: 7px; }
+  .form-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .form-input, .form-textarea {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    color: var(--white); padding: 13px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 0.88rem;
+    outline: none; transition: border-color 0.2s; resize: none; width: 100%;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); }
+  .form-textarea { min-height: 120px; }
+
+  /* FOOTER */
+  footer {
+    background: var(--navy); border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 28px 8%; display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-copy { font-size: 0.76rem; color: rgba(255,255,255,0.28); }
+  .social-links { display: flex; gap: 1.2rem; }
+  .social-links a { color: rgba(255,255,255,0.3); font-size: 1rem; text-decoration: none; transition: color 0.2s; }
+  .social-links a:hover { color: var(--gold); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * { animation: fadeUp 0.8s ease both; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  .hero-name { animation-delay: 0.25s; }
+  .hero-title { animation-delay: 0.35s; }
+  .hero-desc { animation-delay: 0.45s; }
+  .hero-cta { animation-delay: 0.58s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .training-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .timeline::before { left: 0; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    .timeline-item::before { display: none; }
+    .timeline-date { text-align: left; }
+    .timeline-content { padding-left: 0; }
+  }
+  @media (max-width: 600px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Sabbir Naeem</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#training">Training</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="bg-grid"></div>
+  <div class="hero-left">
+    <p class="hero-eyebrow">Open to Senior Opportunities</p>
+    <h1 class="hero-name">Md. Sabbir<br><em>Hossain Naeem</em></h1>
+    <p class="hero-title">Senior Business Analyst &nbsp;·&nbsp; Product Development &nbsp;·&nbsp; ERP &amp; HRIS</p>
+    <p class="hero-desc">Results-driven IT professional with 6+ years of experience in Product Management, Business Analysis, and Project Management — turning complex business needs into functional solutions that drive growth.</p>
+    <div class="hero-cta">
+      <a href="#experience" class="btn-primary">My Experience</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-box">
+      <span class="hero-initials">SN</span>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Years Exp.</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4</div>
+        <div class="stat-label">Companies</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">ERP</div>
+        <div class="stat-label">& HRIS Focus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <div>
+      <p class="section-eyebrow">About Me</p>
+      <h2 class="section-title">Analyst, Problem Solver,<br>Product Driver</h2>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p class="about-lead">Results-driven IT professional specializing in ERP and HRIS domains — bridging business stakeholders and technical teams to deliver solutions that actually work.</p>
+      <p class="about-body">With 6+ years spanning Business Analysis, Product Management, and Software Engineering, I bring a rare blend of technical fluency and strategic thinking. I excel at requirement gathering, process analysis, solution design, and end-to-end system implementation.</p>
+      <p class="about-body">My career objective is to contribute within a forward-thinking organization through a team-based, result-oriented approach — leveraging my cross-functional experience to drive measurable improvement in product delivery and business outcomes.</p>
+      <div style="margin-top: 2rem;">
+        <p class="section-eyebrow" style="margin-bottom:12px;">Soft Skills</p>
+        <div class="soft-grid">
+          <span class="soft-pill">Communication</span>
+          <span class="soft-pill">Presentation</span>
+          <span class="soft-pill">Team Player</span>
+          <span class="soft-pill">Confidence</span>
+          <span class="soft-pill">Negotiation</span>
+          <span class="soft-pill">Adaptability</span>
+          <span class="soft-pill">Leadership</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <ul class="info-list">
+        <li><span class="info-key">Name</span><span class="info-val">Md. Sabbir Hossain Naeem</span></li>
+        <li><span class="info-key">Date of Birth</span><span class="info-val">10th August, 1997</span></li>
+        <li><span class="info-key">Nationality</span><span class="info-val">Bangladeshi</span></li>
+        <li><span class="info-key">Location</span><span class="info-val">H# 2, Katasur, Mohammadpur, Dhaka-1207</span></li>
+        <li><span class="info-key">Phone</span><span class="info-val">+880 1624208084</span></li>
+        <li><span class="info-key">Email</span><span class="info-val">naeemsabbir0@gmail.com</span></li>
+        <li><span class="info-key">LinkedIn</span><span class="info-val"><a href="https://www.linkedin.com/in/nmdsabbir10" target="_blank" style="color:var(--gold);text-decoration:none;">linkedin.com/in/nmdsabbir10</a></span></li>
+        <li><span class="info-key">Education</span><span class="info-val">BSc in CSE — World University of Bangladesh (2022)<br>Diploma in CS — Mangrove Institute (2019)</span></li>
+        <li><span class="info-key">Interests</span><span class="info-val">Travel &nbsp;·&nbsp; Robotics &nbsp;·&nbsp; Artificial Intelligence</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <div>
+      <p class="section-eyebrow">Core Expertise</p>
+      <h2 class="section-title">What I Bring<br>to the Table</h2>
+    </div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-clipboard-list"></i></div>
+      <div class="skill-name">Business Analysis</div>
+      <ul class="skill-items">
+        <li>Requirement Gathering & Elicitation</li>
+        <li>BRD, SRS & FRS Documentation</li>
+        <li>Gap & Impact Analysis</li>
+        <li>User Story Mapping</li>
+        <li>Stakeholder Alignment</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-box-open"></i></div>
+      <div class="skill-name">Product Management</div>
+      <ul class="skill-items">
+        <li>Product Lifecycle Management</li>
+        <li>Feature Planning & Prioritization</li>
+        <li>Product Enhancement Initiatives</li>
+        <li>UAT Coordination</li>
+        <li>User Onboarding & Adoption</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+      <div class="skill-name">Process Improvement</div>
+      <ul class="skill-items">
+        <li>AS-IS / TO-BE Process Mapping</li>
+        <li>BPMN Diagram Preparation</li>
+        <li>Workflow & System Design</li>
+        <li>Automation Identification</li>
+        <li>Solution Design Documentation</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-tasks"></i></div>
+      <div class="skill-name">Project Management</div>
+      <ul class="skill-items">
+        <li>Agile / Scrum Delivery</li>
+        <li>Sprint Planning & Tracking</li>
+        <li>Issue & Risk Management</li>
+        <li>Deployment Coordination</li>
+        <li>Milestone Monitoring</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-server"></i></div>
+      <div class="skill-name">ERP & HRIS Systems</div>
+      <ul class="skill-items">
+        <li>End-to-End ERP Implementation</li>
+        <li>Data Integrity & Migration</li>
+        <li>System Configuration & Testing</li>
+        <li>ERP Practice Methodologies</li>
+        <li>ERP Training & Support</li>
+      </ul>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon"><i class="fas fa-code"></i></div>
+      <div class="skill-name">Technical Background</div>
+      <ul class="skill-items">
+        <li>Software Development (ARP Soft)</li>
+        <li>ERP Scripting & Customization</li>
+        <li>Database Design & Management</li>
+        <li>UI/UX Understanding</li>
+        <li>QA Coordination & Testing</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <div>
+      <p class="section-eyebrow">Career Journey</p>
+      <h2 class="section-title">Professional<br>Experience</h2>
+    </div>
+  </div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="timeline-period">Nov 2022 — Present</div>
+        <div class="timeline-company">AKIJ iBOS Limited<br>An Akij Group</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Senior Business Analyst</div>
+        <p class="timeline-desc">Leading business analysis and product delivery within ERP and HRIS domains at one of Bangladesh's largest conglomerates. Acting as the key bridge between business stakeholders and technical teams to drive end-to-end solution delivery.</p>
+        <ul class="resp-list">
+          <li>Collaborated with stakeholders to gather, analyze, and document business and product requirements</li>
+          <li>Translated requirements into functional specifications and system workflows for development teams</li>
+          <li>Prepared BPMN diagrams and process flows to support solution design and implementation</li>
+          <li>Coordinated QA teams during testing and UAT to ensure quality expectations were met</li>
+          <li>Maintained project documentation including SRS, BRD, user stories, workflows, and user manuals</li>
+          <li>Supported project planning, issue tracking, deployment coordination, and change management</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">ERP</span><span class="tag">HRIS</span><span class="tag">BPMN</span>
+          <span class="tag">UAT</span><span class="tag">Agile</span><span class="tag">Jira</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="timeline-period">Jun 2021 — Oct 2022</div>
+        <div class="timeline-company">Sadesh Farms Limited</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Project Coordinator, ERP</div>
+        <p class="timeline-desc">Managed and delivered large-scale ERP engagements, identifying and implementing creative business and technology solutions across key industries.</p>
+        <ul class="resp-list">
+          <li>Managed complex ERP engagements to design and implement business & technology solutions</li>
+          <li>Developed and maintained contact with top decision-makers across the organization</li>
+          <li>Developed ERP practice solutions, methodologies, and pricing strategies</li>
+          <li>Updated and managed ERP systems to ensure accurate business results</li>
+          <li>Provided procedures and reports to resolve data integrity issues</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">ERP Implementation</span><span class="tag">Stakeholder Management</span><span class="tag">Data Integrity</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="timeline-period">Feb 2020 — May 2021</div>
+        <div class="timeline-company">ARP Soft</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Software Engineer</div>
+        <p class="timeline-desc">Developed and implemented software programs, designed databases, and converted business requirements into technical design documents.</p>
+        <ul class="resp-list">
+          <li>Developed, tested, and implemented new software programs and web applications</li>
+          <li>Designed and updated software databases; resolved complex technical design issues</li>
+          <li>Analyzed user requirements and converted them into design documents</li>
+          <li>Developed technical specifications and maintained comprehensive documentation</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">Software Development</span><span class="tag">Database Design</span><span class="tag">Technical Specs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">
+        <div class="timeline-period">May 2019 — Jan 2020</div>
+        <div class="timeline-company">Getco Online Limited</div>
+      </div>
+      <div class="timeline-content">
+        <div class="timeline-role">Programmer</div>
+        <p class="timeline-desc">Established ERP needs via business process analysis, wrote customized programs, and trained ERP end-users.</p>
+        <ul class="resp-list">
+          <li>Established ERP needs via business process analysis and consultation</li>
+          <li>Wrote customized programs, scripts, and configured ERP applications</li>
+          <li>Developed user-friendly functionalities and interfaces</li>
+          <li>Provided technical support and training to ERP end-users</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag">ERP Configuration</span><span class="tag">Programming</span><span class="tag">End-User Training</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <div>
+      <p class="section-eyebrow">Tools & Technologies</p>
+      <h2 class="section-title">Technical<br>Proficiency</h2>
+    </div>
+  </div>
+
+  <div class="tools-section">
+    <p class="tools-section-label">Data Analysis</p>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-file-excel"></i></div><div class="tool-name">Excel</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-database"></i></div><div class="tool-name">MSSQL</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-database"></i></div><div class="tool-name">PostgreSQL</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-chart-bar"></i></div><div class="tool-name">Power BI</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-chart-pie"></i></div><div class="tool-name">Tableau</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-file-powerpoint"></i></div><div class="tool-name">PowerPoint</div></div>
+    </div>
+  </div>
+
+  <div class="tools-section">
+    <p class="tools-section-label">Project Management</p>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-jira"></i></div><div class="tool-name">Jira</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-sync-alt"></i></div><div class="tool-name">Agile / Scrum</div></div>
+    </div>
+  </div>
+
+  <div class="tools-section">
+    <p class="tools-section-label">Modeling & Documentation</p>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-draw-polygon"></i></div><div class="tool-name">Draw.io</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-palette"></i></div><div class="tool-name">Canva</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-desktop"></i></div><div class="tool-name">Balsamiq</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-figma"></i></div><div class="tool-name">Figma</div></div>
+    </div>
+  </div>
+
+  <div class="tools-section">
+    <p class="tools-section-label">Programming (Foundational)</p>
+    <div class="tools-grid">
+      <div class="tool-item"><div class="tool-icon"><i class="fas fa-code"></i></div><div class="tool-name">C++</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-html5"></i></div><div class="tool-name">HTML / CSS</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-js"></i></div><div class="tool-name">JavaScript</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-java"></i></div><div class="tool-name">Java</div></div>
+      <div class="tool-item"><div class="tool-icon"><i class="fab fa-php"></i></div><div class="tool-name">PHP Laravel</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING -->
+<section id="training">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <div>
+      <p class="section-eyebrow">Continuous Learning</p>
+      <h2 class="section-title">Training &<br>Workshops</h2>
+    </div>
+  </div>
+  <div class="training-grid">
+    <div class="training-card">
+      <div class="training-year">2024</div>
+      <div class="training-title">Product Management</div>
+      <p class="training-meta"><i class="fas fa-university" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Universidad de Palermo, Coursera</p>
+      <p class="training-meta"><i class="fas fa-clock" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Duration: 1 Month</p>
+    </div>
+    <div class="training-card">
+      <div class="training-year">2021</div>
+      <div class="training-title">Digital Marketing & Shopify</div>
+      <p class="training-meta"><i class="fas fa-university" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Webcoder-IT</p>
+      <p class="training-meta"><i class="fas fa-clock" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Duration: 6 Months</p>
+    </div>
+    <div class="training-card">
+      <div class="training-year">2019</div>
+      <div class="training-title">Mobile Game & Application</div>
+      <p class="training-meta"><i class="fas fa-university" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Creative IT Institute of Bangladesh</p>
+      <p class="training-meta"><i class="fas fa-clock" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Duration: 3 Months</p>
+    </div>
+    <div class="training-card">
+      <div class="training-year">2018</div>
+      <div class="training-title">Mobile Apps Development</div>
+      <p class="training-meta"><i class="fas fa-university" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>IICT — KUET</p>
+      <p class="training-meta"><i class="fas fa-clock" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Duration: 6 Months</p>
+    </div>
+    <div class="training-card">
+      <div class="training-year">2018</div>
+      <div class="training-title">Mobile Game & Application</div>
+      <p class="training-meta"><i class="fas fa-university" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>ICT Ministry of Bangladesh</p>
+      <p class="training-meta"><i class="fas fa-clock" style="color:var(--gold);margin-right:6px;font-size:0.85rem;"></i>Duration: 2 Months</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">06</span>
+    <div>
+      <p class="section-eyebrow">Let's Connect</p>
+      <h2 class="section-title">Open to New<br>Opportunities</h2>
+    </div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p>I'm always open to discussing senior BA roles, product management opportunities, ERP consulting engagements, or collaborative projects. Let's talk about how I can contribute to your team's success.</p>
+      <div class="contact-detail">
+        <div class="contact-row"><i class="fas fa-map-marker-alt"></i> Katasur, Mohammadpur, Dhaka-1207, Bangladesh</div>
+        <div class="contact-row"><i class="fas fa-phone"></i> +880 1624208084</div>
+        <div class="contact-row"><i class="fas fa-envelope"></i> <a href="mailto:naeemsabbir0@gmail.com">naeemsabbir0@gmail.com</a></div>
+        <div class="contact-row"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/nmdsabbir10" target="_blank">linkedin.com/in/nmdsabbir10</a></div>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input class="form-input" type="text" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input class="form-input" type="email" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input class="form-input" type="text" placeholder="Role inquiry / consulting">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell me about the opportunity..."></textarea>
+      </div>
+      <button class="btn-primary" style="align-self:flex-start; cursor:pointer; border:none;">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">© 2026 Md. Sabbir Hossain Naeem — Senior Business Analyst</p>
+  <div class="social-links">
+    <a href="https://www.linkedin.com/in/nmdsabbir10" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="mailto:naeemsabbir0@gmail.com"><i class="fas fa-envelope"></i></a>
+  </div>
+</footer>
+
+</body>
+</html>
